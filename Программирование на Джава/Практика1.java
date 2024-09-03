@@ -16,13 +16,11 @@ public class test1 {
         double digit = yuan % 10;
 
         if (yuan == 1){
-            System.out.println("У вас 1 китайский Юань " + "это " + roubles + " рублей:");
-        }else if ((yuan > 1 && yuan < 5)){
-             System.out.println("У вас "+ yuan + " китайских Юаня " + "это " + roubles + " рублей:");
-        } else if ((yuan >4 && yuan < 10) || digit == 0.0) {
-            System.out.println("У вас "+ yuan + " китайских Юаней " + "это " + roubles + " рублей:");
-        } else {
-            System.out.println("У вас "+ yuan + " китайских Юаня " + "это " + roubles + " рублей:");
+            System.out.println("У вас 1 китайский Юань, " + "это " + roubles + " рублей:");
+        }else if (digit > 1 && digit < 5 && yuan > 19 || yuan < 5) {
+             System.out.println("У вас "+ yuan + " китайских Юаня - " + "это " + roubles + " рублей:");
+        }else {
+            System.out.println("У вас "+ yuan + " китайских Юаней - " + "это " + roubles + " рублей:");
         }
     }
 }
