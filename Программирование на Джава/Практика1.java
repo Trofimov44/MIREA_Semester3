@@ -1,3 +1,4 @@
+//Задача1 и задача2
 import java.util.Scanner;
 
 public class test1 {
