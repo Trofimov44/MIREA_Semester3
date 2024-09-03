@@ -1,4 +1,3 @@
-//Задача1 и Задача2
 import java.util.Scanner;
 
 public class test1 {
@@ -12,12 +11,16 @@ public class test1 {
         yuan = scanner.nextInt();
         roubles = ROUBLES_PER_YUAN * yuan;
 
+        double digit = yuan % 10;
+
         if (yuan == 1){
             System.out.println("У вас 1 китайский Юань " + "это " + roubles + " рублей:");
-        }else if (yuan == 2 || yuan == 3 || yuan == 4 ){
+        }else if ((yuan > 1 && yuan < 5)){
              System.out.println("У вас "+ yuan + " китайских Юаня " + "это " + roubles + " рублей:");
-        }else {
+        }else if ((yuan >4 && yuan < 10) || digit == 0.0) {
             System.out.println("У вас "+ yuan + " китайских Юаней " + "это " + roubles + " рублей:");
+        } else {
+            System.out.println("У вас "+ yuan + " китайских Юаня " + "это " + roubles + " рублей:");
         }
     }
 }
