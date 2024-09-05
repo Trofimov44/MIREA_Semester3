@@ -6,6 +6,7 @@ int main() {
   cout << (int)x;
   return 0;
 }
+
 Задание 1б:
 int main() {
   unsigned char x = 255;
@@ -14,6 +15,7 @@ int main() {
   cout << (int)x;
   return 0;
 }
+
 Задание 1в:
 #include <cstdlib>
 #include <iostream>
