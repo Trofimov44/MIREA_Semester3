@@ -60,7 +60,7 @@ int main()
     }
     
     for (int i = 0; i < 8; i++) {
-        if (ArrayBit & (1 << i)) {
+        if (ArrayBit & (maska << i)) {
             cout << i << " ";
         }
     }
