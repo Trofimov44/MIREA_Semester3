@@ -17,7 +17,7 @@ public class test1 {
 
         if (yuan == 1){
             System.out.println("У вас 1 китайский Юань, " + "это " + roubles + " руб");
-        }else if (digit > 1 && digit < 5 && yuan > 19 || yuan < 5) {
+        }else if ( digit > 0 && digit < 5 && (yuan > 19 || yuan < 5) && yuan != 0) {
              System.out.println("У вас "+ yuan + " китайских Юаня - " + "это " + roubles + " руб");
         }else {
             System.out.println("У вас "+ yuan + " китайских Юаней - " + "это " + roubles + " руб");
