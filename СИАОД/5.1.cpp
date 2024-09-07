@@ -118,3 +118,66 @@ int main()
 
     return 0;
 }
+
+Задание 3a:
+#include <iostream>
+#include <fstream>
+#include <vector>
+
+#include <ctime>
+using namespace std;
+
+// Размер битового массива
+const int MAX_NUM = 10000000;
+
+int main() {
+    setlocale(LC_ALL, "rus");
+    // Засекаем время начала программы
+    clock_t t0 = clock();
+
+    // Создаем битовый массив, представленный в виде массива целых чисел
+    vector<bool> ArrayBit(MAX_NUM, 0);
+
+    // Открываем файл для чтения
+    ifstream inputFile("lalala.txt");
+    if (!inputFile.is_open()) {
+        cerr << "Ошибка открытия файла " << endl;
+        return 1;
+    }
+
+    // Читаем числа из файла и выставляем соответствующие биты
+    int number;
+    while (inputFile >> number) {
+        if (number >= 0 && number < MAX_NUM) {
+            ArrayBit[number] = 1;
+        }
+    }
+
+    inputFile.close();  // Закрываем файл
+
+    // Открываем файл для записи
+    ofstream outputFile("lolol.txt");
+    if (!outputFile.is_open()) {
+        cerr << "Ошибка открытия файла" << endl;
+        return 1;
+    }
+
+    // Проходим по битовому массиву и записываем индексы установленных битов в выходной файл
+    for (int i = 0; i < MAX_NUM; ++i) {
+        if (ArrayBit[i]) {
+            outputFile << i << endl;
+        }
+    }
+
+    outputFile.close();  // Закрываем файл
+
+    // Засекаем время окончания программы
+    clock_t t1 = clock();
+
+    // Выводим время выполнения программы
+    cout << "Время выполнения программы: " << (double)(t1 - t0) / CLOCKS_PER_SEC << " секунд" << endl;
+
+    return 0;
+}
+
+
