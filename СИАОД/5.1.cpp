@@ -123,11 +123,9 @@ int main()
 #include <iostream>
 #include <fstream>
 #include <vector>
-
 #include <ctime>
 using namespace std;
 
-// Размер битового массива
 const int MAX_NUM = 10000000;
 
 int main() {
@@ -175,9 +173,7 @@ int main() {
     clock_t t1 = clock();
 
     // Выводим время выполнения программы
-    cout << "Время выполнения программы: " << (double)(t1 - t0) / CLOCKS_PER_SEC << " секунд" << endl;
+    cout << "Числа из файла lalal.txt отсортированы и помещены в lolol.txt Время выполнения программы: " << (double)(t1 - t0) / CLOCKS_PER_SEC << " секунд" << endl;
 
     return 0;
 }
-
-
