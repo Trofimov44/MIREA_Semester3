@@ -18,5 +18,6 @@ echo "+"$(printf -- '-%.0s' $(seq 1 $((text_length + 2))))"+"
 echo "| $text |"
 echo "+"$(printf -- '-%.0s' $(seq 1 $((text_length + 2))))"+"```
 
+
 ![изображение](https://github.com/user-attachments/assets/f47e79d5-866d-4e38-90e6-03529f084104)
 
