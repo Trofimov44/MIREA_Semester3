@@ -1,4 +1,4 @@
-Задача 1:
+![изображение](https://github.com/user-attachments/assets/be6fcc64-ab64-402d-bf29-2d1464482e1a)Задача 1:
 grep '^[^:]' /etc/passwd | cut -d: -f1 | sort
 
 Задача 2:
