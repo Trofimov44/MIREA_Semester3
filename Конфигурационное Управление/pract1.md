@@ -1,4 +1,4 @@
-# Задача1:
+![изображение](https://github.com/user-attachments/assets/95dfaa0c-d7fd-4ecc-9718-7da520f42a6e)# Задача1:
 ```
 grep '^[^:]' /etc/passwd | cut -d: -f1 | sort
 ```
@@ -23,3 +23,8 @@ echo "+"$(printf -- '-%.0s' $(seq 1 $((text_length + 2))))"+"
 
 ![изображение](https://github.com/user-attachments/assets/f47e79d5-866d-4e38-90e6-03529f084104)
 
+# Задача 4:
+```
+grep -oE '\b[A-Za-z_][A-Za-z0-9_]*\b' main.cpp | sort -u
+```
+![изображение](https://github.com/user-attachments/assets/d22e13f6-617d-4398-8c44-f8c65625d2da)
