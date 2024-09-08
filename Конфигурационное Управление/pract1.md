@@ -1,3 +1,5 @@
+![Uploading изображение.png…]()
+
 Задача 1:
 grep '^[^:]' /etc/passwd | cut -d: -f1 | sort
 
