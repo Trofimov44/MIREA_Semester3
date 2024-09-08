@@ -10,6 +10,7 @@ cat /etc/protocols | awk '{print $2, $1}' | sort -nr | head -n5
 ![изображение](https://github.com/user-attachments/assets/ffe2388b-8ff5-4af2-9e06-bad6e960dff7)
 
 # Задача 3:
+
 #!/bin/bash
 text="$1"
 text_length=${#text}
