@@ -28,7 +28,7 @@ public class Car {
         System.out.println(this.model + " " + this.license + " " + this.color + " " + this.year);
     }
 
-    public void getName(int year){
+    public void setName(int year){
         this.year = year;
     }
 
@@ -39,7 +39,7 @@ public class Car {
 
         model1.To_string();
 
-        model3.getName(2);
+        model3.setName(2);
         model3.To_string();
 
     }
