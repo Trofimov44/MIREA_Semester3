@@ -60,4 +60,19 @@ if [ -z "$1" ]; then
 ```
 ![изображение](https://github.com/user-attachments/assets/24e7a5cd-eda3-4ce2-93c6-8707f7b2f3ba)
 
+# Задача 6:
+```
+#!/bin/bash
+for file in *.{c,js,py}; do
+  if [ -f "$file" ]; then
+    first_line=$(head -n 1 "$file")
+    if [[ "$first_line" == /* ]] || [[ "$first_line" == \#* ]] || [[ "$first_line" == "//"* ]]; then
+      echo "$file: комментарий найден в первой строке."
+    else
+      echo "$file: комментарий не найден."
+    fi
+  fi
+done
+```
+
 
