@@ -28,3 +28,36 @@ echo "+"$(printf -- '-%.0s' $(seq 1 $((text_length + 2))))"+"
 grep -oE '\b[A-Za-z_][A-Za-z0-9_]*\b' main.cpp | sort -u
 ```
 ![изображение](https://github.com/user-attachments/assets/d22e13f6-617d-4398-8c44-f8c65625d2da)
+
+
+# Задача 5:
+```
+#!/bin/bash
+if [ -z "$1" ]; then
+      echo "реализация задания с помощью команд "
+        #ls -l /usr/local/bin/reg
+  #reg banner
+      exit 1
+    fi
+
+    prog_name="$1"
+    dest="/usr/local/bin/$prog_name"
+
+    # проверка- существует ли программа
+    if [ ! -f "$prog_name" ]; then
+      echo "файл $prog_name не найден."
+      exit 1
+    fi
+
+    # копирование в /usr/local/bin и установка прав доступа
+    sudo cp "$prog_name" "$dest"
+    sudo chmod 755 "$dest"
+
+    echo "программа $prog_name успешно зарегистрирована в /usr/local/bin."
+
+  #ls -l /usr/local/bin/reg
+  #reg banner
+```
+![изображение](https://github.com/user-attachments/assets/24e7a5cd-eda3-4ce2-93c6-8707f7b2f3ba)
+
+
