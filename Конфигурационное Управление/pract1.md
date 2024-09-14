@@ -160,4 +160,5 @@ fi
 
 find "$directory" -type f -name "*.txt" -empty -print
 ```
-![изображение](https://github.com/user-attachments/assets/9fda64db-85ef-4f23-b6b9-edaff4bffcc3)
+![изображение](https://github.com/user-attachments/assets/015310ef-8e68-4457-89de-d1c558f728b5)
+
