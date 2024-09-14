@@ -80,19 +80,26 @@ done
 # Задача 7:
 ```
 #!/bin/bash
-
-if [ -z "$1" ]; then
-    echo "укажите путь для поиска файлов-дубликатов."
+if [ "$#" -ne 1 ]; then
+    echo "Использование: $0 <директория>"
     exit 1
 fi
 
-search_path="$1"
+directory="$1"
+if [ ! -d "$directory" ]; then
+    echo "Ошибка: директория '$directory' не найдена"
+    exit 1
+fi
 
-find "$search_path" -type f -exec md5 -r {} + | awk '{print $1}' | sort | uniq -d | while read -r hash; do
-    find "$search_path" -type f -exec md5 -r {} + | awk -v hash="$hash" '$1 == hash {print $2}'
-done
-
+find "$directory" -type f -exec md5sum {} + | sort | awk '{
+    if ($1 in seen) {
+        print "Дубликат: " $2 " <--> " seen[$1];
+    } else {
+        seen[$1] = $2;
+    }
+}'
 ```
+![изображение](https://github.com/user-attachments/assets/32c631ab-32eb-4631-a36b-67bfb1740e24)
 
 
 
@@ -113,8 +120,7 @@ done
     echo "файл с расширением $extension из $search_path архивирован в $archive_name..."
     find "$search_path" -type f -name "*.$extension" | tar -cvf "$archive_name" -T -
 ```
-
-
+![изображение](https://github.com/user-attachments/assets/e969d60e-476d-46dc-ad20-a5d62eebca79)
 
 # Задние 9:
 ```
