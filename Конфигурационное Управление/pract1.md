@@ -111,9 +111,8 @@ done
     fi
     echo "файл с расширением $extension из $search_path архивирован в $archive_name..."
     find "$search_path" -type f -name "*.$extension" | tar -cvf "$archive_name" -T -
-    echo "
-архив $archive_name создан"
 ```
+![изображение](https://github.com/user-attachments/assets/123b14da-e754-4109-8f4a-2a9f6da01276)
 
 
 # Задние 9:
