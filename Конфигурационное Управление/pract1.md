@@ -74,5 +74,6 @@ for file in *.{c,js,py}; do
   fi
 done
 ```
-![изображение](https://github.com/user-attachments/assets/d9332d11-a88c-4269-93a9-5ee9d4da4878)
+![изображение](https://github.com/user-attachments/assets/b336e7f2-61a9-4b6a-9072-2cac0b53de96)
+
 
