@@ -118,6 +118,4 @@ done
 
     echo "
 архив $archive_name создан"
-
-#/Users/gold/PycharmProjects/bash/scripts/task8.sh /Users/gold/PycharmProjects/bash/duplicatesTASK7 txt
 ```
