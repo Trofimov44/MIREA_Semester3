@@ -141,6 +141,24 @@ else
 fi
 
 ```
+![изображение](https://github.com/user-attachments/assets/c6f02a03-c7b8-43a1-a632-6560738f9822)
 
 # Задание 10:
+```
+#!/bin/bash
 
+if [ "$#" -ne 1 ]; then
+    echo "Использование: $0 <директория>"
+    exit 1
+fi
+
+directory="$1"
+
+if [ ! -d "$directory" ]; then
+    echo "Ошибка: директория '$directory' не найдена"
+    exit 1
+fi
+
+find "$directory" -type f -name "*.txt" -empty -print
+```
+![изображение](https://github.com/user-attachments/assets/9fda64db-85ef-4f23-b6b9-edaff4bffcc3)
