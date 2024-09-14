@@ -80,25 +80,18 @@ done
 ```
 #!/bin/bash
 
-    if [ -z "$1" ] || [ -z "$2" ]; then
-        echo "использование: $0 <путь> <расширение>"
-        exit 1
-    fi
+if [ -z "$1" ]; then
+    echo "укажите путь для поиска файлов-дубликатов."
+    exit 1
+fi
 
-    search_path="$1"
-    extension="$2"
-    archive_name="archive_$extension.tar"
+search_path="$1"
 
-    if [ ! -d "$search_path" ]; then
-        echo "путь $search_path не существует или не является директорией"
-        exit 1
-    fi
+find "$search_path" -type f -exec md5 -r {} + | awk '{print $1}' | sort | uniq -d | while read -r hash; do
+    find "$search_path" -type f -exec md5 -r {} + | awk -v hash="$hash" '$1 == hash {print $2}'
+done
 
-    echo "архивирование файлов с расширением $extension из $search_path в $archive_name..."
-    find "$search_path" -type f -name "*.$extension" | tar -cvf "$archive_name" -T -
-
-    echo "
-архив $archive_name создан"
+#/Users/gold/PycharmProjects/bash/scripts/find_duplicates.sh /Users/gold/PycharmProjects/bash/duplicatesTASK7
 ```
 ![изображение](https://github.com/user-attachments/assets/a0c242ea-6548-49f7-9e62-03aad7160073)
 
