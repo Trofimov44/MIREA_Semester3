@@ -91,7 +91,6 @@ find "$search_path" -type f -exec md5 -r {} + | awk '{print $1}' | sort | uniq -
     find "$search_path" -type f -exec md5 -r {} + | awk -v hash="$hash" '$1 == hash {print $2}'
 done
 
-#/Users/gold/PycharmProjects/bash/scripts/find_duplicates.sh /Users/gold/PycharmProjects/bash/duplicatesTASK7
 ```
 ![изображение](https://github.com/user-attachments/assets/a0c242ea-6548-49f7-9e62-03aad7160073)
 
