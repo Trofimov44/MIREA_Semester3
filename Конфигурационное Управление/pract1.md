@@ -99,27 +99,48 @@ done
 ```
 #!/bin/bash
     if [ -z "$1" ] || [ -z "$2" ]; then
-        echo "использование: $0 <путь> <расширение>"
+        echo "укажите путь и расширение"
         exit 1
     fi
-
     search_path="$1"
     extension="$2"
-    archive_name="archive_$extension.tar"
-
+    archive_name="archive.tar"
     if [ ! -d "$search_path" ]; then
         echo "путь $search_path не существует или не является директорией"
         exit 1
     fi
-
-    echo "архивирование файлов с расширением $extension из $search_path в $archive_name..."
+    echo "файл с расширением $extension из $search_path архивирован в $archive_name..."
     find "$search_path" -type f -name "*.$extension" | tar -cvf "$archive_name" -T -
-
     echo "
 архив $archive_name создан"
 ```
+![изображение](https://github.com/user-attachments/assets/5bbe99fb-c3e5-4f07-bd2a-045230143949)
 
 # Задние 9:
+```
+#!/bin/bash
+
+if [ "$#" -ne 2 ]; then
+    echo "Использование: $0 <входной файл> <выходной файл>"
+    exit 1
+fi
+
+input_file="$1"
+output_file="$2"
+
+if [ ! -f "$input_file" ]; then
+    echo "Ошибка: входной файл '$input_file' не найден"
+    exit 1
+fi
+
+if sed 's/    /\t/g' "$input_file" > "$output_file"; then
+    echo "Операция успешна. Выходной файл: $output_file"
+else
+    echo "Ошибка при обработке файла"
+    exit 1
+fi
+
+```
 
 # Задание 10:
 
