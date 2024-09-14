@@ -147,6 +147,7 @@ else
 fi
 
 ```
+![изображение](https://github.com/user-attachments/assets/939be6f2-9989-4495-a018-16126939b1e7)
 
 
 # Задание 10:
@@ -167,5 +168,4 @@ fi
 
 find "$directory" -type f -name "*.txt" -empty -print
 ```
-
-
+![изображение](https://github.com/user-attachments/assets/ca25c543-7098-42d0-8017-93a7c9eef431)
