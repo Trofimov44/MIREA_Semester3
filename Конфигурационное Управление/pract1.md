@@ -114,7 +114,7 @@ done
     echo "
 архив $archive_name создан"
 ```
-![изображение](https://github.com/user-attachments/assets/5bbe99fb-c3e5-4f07-bd2a-045230143949)
+
 
 # Задние 9:
 ```
