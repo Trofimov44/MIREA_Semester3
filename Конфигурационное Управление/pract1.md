@@ -74,7 +74,7 @@ for file in *.{c,js,py}; do
   fi
 done
 ```
-![Uploading изображение.png…]()
+![изображение](https://github.com/user-attachments/assets/532fec29-4ed9-4a2a-9196-af26e94a7467)
 
 
 # Задача 7:
