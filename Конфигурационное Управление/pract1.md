@@ -74,7 +74,7 @@ for file in *.{c,js,py}; do
   fi
 done
 ```
-![изображение](https://github.com/user-attachments/assets/b336e7f2-61a9-4b6a-9072-2cac0b53de96)
+
 
 # Задача 7:
 ```
@@ -92,7 +92,7 @@ find "$search_path" -type f -exec md5 -r {} + | awk '{print $1}' | sort | uniq -
 done
 
 ```
-![изображение](https://github.com/user-attachments/assets/a0c242ea-6548-49f7-9e62-03aad7160073)
+
 
 
 # Задание 8:
@@ -112,7 +112,7 @@ done
     echo "файл с расширением $extension из $search_path архивирован в $archive_name..."
     find "$search_path" -type f -name "*.$extension" | tar -cvf "$archive_name" -T -
 ```
-![изображение](https://github.com/user-attachments/assets/123b14da-e754-4109-8f4a-2a9f6da01276)
+
 
 
 # Задние 9:
@@ -140,7 +140,7 @@ else
 fi
 
 ```
-![изображение](https://github.com/user-attachments/assets/c6f02a03-c7b8-43a1-a632-6560738f9822)
+
 
 # Задание 10:
 ```
@@ -160,5 +160,5 @@ fi
 
 find "$directory" -type f -name "*.txt" -empty -print
 ```
-![изображение](https://github.com/user-attachments/assets/015310ef-8e68-4457-89de-d1c558f728b5)
+
 
