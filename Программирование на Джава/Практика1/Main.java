@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class test1 {
+public class Main {
     public static void main(String[] args){
         int yuan;
         double roubles;
