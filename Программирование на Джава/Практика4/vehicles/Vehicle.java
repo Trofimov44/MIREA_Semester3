@@ -23,9 +23,7 @@ public abstract class Vehicle {
         return "{"+model+" "+license+" "+color+" "+year+" "+ownerName+" "+insuranceNumber+" "+engineType+"}";
     }
 
-    public String vehicleType(){
-        return " ";
-    }
+    public abstract String vehicleType();
 
     public String getModel(){
         return model;
