@@ -7,7 +7,38 @@ import datetime
 # Словарь для хранения прав доступа к файлам (эмулируем chmod)
 file_permissions = {}
 
+# Функция для перевода числовых прав в строковой формат (rwx)
+def permissions_to_str(perm):
+    perm = int(perm, 8)  # Преобразуем восьмеричное число в целое
+    perms_str = ""
+    # Права владельца
+    perms_str += 'r' if perm & 0o400 else '-'
+    perms_str += 'w' if perm & 0o200 else '-'
+    perms_str += 'x' if perm & 0o100 else '-'
+    # Права группы
+    perms_str += 'r' if perm & 0o040 else '-'
+    perms_str += 'w' if perm & 0o020 else '-'
+    perms_str += 'x' if perm & 0o010 else '-'
+    # Права для остальных
+    perms_str += 'r' if perm & 0o004 else '-'
+    perms_str += 'w' if perm & 0o002 else '-'
+    perms_str += 'x' if perm & 0o001 else '-'
+    return perms_str
+
 # Функция для вывода списка файлов в zip-архиве
+def ls_l(myzip, current_dir):
+    listed = set()  # Множество для хранения уникальных имен
+    for name in myzip.namelist():
+        # Проверяем, начинается ли имя файла с текущей директории
+        if name.startswith(current_dir):
+            # Получаем относительное имя файла/папки
+            relative_name = name[len(current_dir):].split('/')[0]
+            if relative_name not in listed:
+                # Получаем права доступа для файла
+                perms = file_permissions.get(name, "default")
+                perms_str = permissions_to_str(perms) if perms != "default" else "rw-r--r--"
+                print(f"{perms_str} {relative_name}")
+                listed.add(relative_name)
 def ls(myzip, current_dir):
     listed = set()  # Множество для хранения уникальных имен
     for name in myzip.namelist():
@@ -18,9 +49,9 @@ def ls(myzip, current_dir):
             if relative_name not in listed:
                 # Получаем права доступа для файла
                 perms = file_permissions.get(name, "default")
-                print(f"{relative_name} (permissions: {perms})")
+                perms_str = permissions_to_str(perms) if perms != "default" else "rw-r--r--"
+                print(f"{relative_name}")
                 listed.add(relative_name)
-
 # Функция для записи действия в лог-файл
 def log_action(logfile, user, action, target=""):
     timestamp = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')  # Получаем текущее время
@@ -39,10 +70,30 @@ def du(myzip, dir_path):
     return total_size  # Возвращаем общий размер
 
 # Функция для изменения прав доступа к файлу
-def chmod(file_path, permissions, logfile, user):
-    file_permissions[file_path] = permissions  # Устанавливаем права доступа
-    print(f"Права доступа для {file_path} изменены на {permissions}")
-    log_action(logfile, user, f"chmod {permissions}", file_path)  # Логируем изменение
+def chmod(myzip, file_path, permissions, logfile, user):
+    try:
+        # Проверяем наличие всех аргументов
+        if not permissions or not file_path:
+            raise ValueError(
+                "Ошибка: Команда chmod требует указания как прав доступа, так и имени файла. Пример: chmod 755 test.txt")
+
+        # Проверяем корректность переданных прав доступа
+        if len(permissions) != 3 or not permissions.isdigit():
+            raise ValueError(
+                "Неправильный формат прав доступа. Используйте числовое восьмеричное значение, например, 755.")
+
+        # Проверяем существование файла в архиве
+        if file_path not in myzip.namelist():
+            raise FileNotFoundError(f"Ошибка: Файл {file_path} не найден в архиве.")
+
+        # Устанавливаем права доступа
+        file_permissions[file_path] = permissions
+        print(f"Права доступа для {file_path} изменены на {permissions_to_str(permissions)}")
+        log_action(logfile, user, f"chmod {permissions}", file_path)  # Логируем изменение
+
+    except (ValueError, FileNotFoundError) as e:
+        print(e)
+
 
 # Функция для перемещения файла внутри zip-архива
 def mv(zipfile, src, dst, logfile, user):
@@ -88,7 +139,10 @@ def main(zipfile, logfile, user):
         command = input(f"> {zipfile}/{current_dir} ")  # Ввод команды от пользователя
 
         with ZipFile(zipfile, 'r') as myzip:
-            if command == 'ls':
+            if command == 'ls -l':
+                ls_l(myzip, current_dir)  # Выводим список файлов
+                log_action(logfile, user, "ls", current_dir)
+            elif command == 'ls':
                 ls(myzip, current_dir)  # Выводим список файлов
                 log_action(logfile, user, "ls", current_dir)
 
@@ -129,10 +183,18 @@ def main(zipfile, logfile, user):
                 print(f"Размер текущей директории: {size} байт")
                 log_action(logfile, user, "du", current_dir)
 
+
+
             elif command.startswith("chmod "):
-                _, permissions, file_path = command.split()
-                full_path = current_dir + file_path if not file_path.startswith('/') else file_path.strip('/')
-                chmod(full_path, permissions, logfile, user)  # Изменяем права доступа
+                parts = command.split()
+                if len(parts) != 3:
+                    print(
+                        "Ошибка: команда chmod требует указания прав доступа и имени файла. Пример: chmod 755 test.txt")
+                else:
+                    _, permissions, file_path = parts
+                    full_path = current_dir + file_path if not file_path.startswith('/') else file_path.strip('/')
+                    chmod(myzip, full_path, permissions, logfile, user)  # Изменяем права доступа
+
 
             elif command.startswith("mv "):
                 _, src, dst = command.split()
