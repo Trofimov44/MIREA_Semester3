@@ -1,6 +1,6 @@
 package vehicles;
 
-public class ElectricCar extends Car implements ElectricVehicle {
+public class ElectricCar extends Vehicle implements ElectricVehicle {
     private int batteryCapacity;
 
     public ElectricCar(String model,int license,String color,int year,String ownerName, int insuranceNumber,int batteryCapacity) {
@@ -16,14 +16,13 @@ public class ElectricCar extends Car implements ElectricVehicle {
     public int getBatteryCapacity() {
         return batteryCapacity;
     }
-
     public void setBatteryCapacity(int batteryCapacity){
         this.batteryCapacity = batteryCapacity;
     }
 
-    public String toString() {
-        return "{" + getModel() + " " + getLicense() + " " + getColor() +
-                " " + getYear() + " " + getOwnerName() + " " + getInsuranceNumber() +
-                " " + engineType + " " + batteryCapacity + "}";
+    public String toString(){
+        return "{model = "+getModel()+"; license = "+getLicense()+"; color = "+getColor()+"; year = "+getYear()+
+                "; ownerName = "+getOwnerName()+ "; insuranceNumber = "+getInsuranceNumber()+
+                "; engineType = "+engineType+ "; batteryCapacity = "+batteryCapacity+"}";
     }
 }
