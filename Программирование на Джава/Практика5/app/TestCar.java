@@ -1,10 +1,10 @@
 package app;
 import vehicles.Car;
 import vehicles.ElectricCar;
-import vehicles.Vehicle;
+
 import java.util.Scanner;
 
-public class Main { 
+public class TestCar {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
@@ -17,9 +17,9 @@ public class Main {
         car2.setInsuranceNumber(2233);
 
         System.out.println(car2.getBatteryCapacity());
+
         System.out.println(car1.toString());
         System.out.println(car2.toString());
-
     }
 }
 
