@@ -20,7 +20,8 @@ public abstract class Vehicle {
     }
 
     public String toString(){
-        return "{"+model+" "+license+" "+color+" "+year+" "+ownerName+" "+insuranceNumber+" "+engineType+"}";
+        return "{model = "+model+"; license = "+license+"; color = "+color+"; year = "+year+"; ownerName = "+ownerName+
+                "; insuranceNumber = "+insuranceNumber+"; engineType = "+engineType+"}";
     }
 
     public abstract String vehicleType();
