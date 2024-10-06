@@ -21,6 +21,6 @@ public class ElectricCar extends Car {
     }
 
     public String toString(){
-        return "{"+ getModel()+" "+ getLicense()+" "+getColor()+" "+getYear()+" "+getOwnerName()+" "+getInsuranceNumber()+" "+engineType+"}";
+        return "{"+ getModel()+" "+ getLicense()+" "+getColor()+" "+getYear()+" "+getOwnerName()+" "+getInsuranceNumber()+" "+engineType+ batteryCapacity +"}";
     }
 }
