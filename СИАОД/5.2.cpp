@@ -1,5 +1,3 @@
-## Задание 1
-```C++
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -11,9 +9,8 @@
 
 using namespace std;
 
-int main() {
-    setlocale(LC_ALL, "rus");
 
+void task1() {
     // Массивы для данных
     string Destination[5] = {
         "Новгород Великий",
@@ -38,7 +35,7 @@ int main() {
     ofstream outFile("test.txt");
     if (!outFile) {
         cerr << "Не удалось создать файл lolol.txt!" << endl;
-        return 1;
+        exit(0);
     }
 
     // Запись данных в текстовый файл
@@ -69,25 +66,14 @@ int main() {
     binFile.close(); // Закрытие двоичного файла
 
     cout << "Двоичный файл успешно создан" << endl;
-
-    return 0;
 }
-```
-## Задание 2
-```C++
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <ctime>
-using namespace std;
 
-int main() {
-    setlocale(LC_ALL, "rus");
+void task2() {
     // Открываем двоичный файл для чтения
     ifstream binFile("test.bin", ios::binary);
     if (!binFile) {
         cerr << "Не удалось открыть двоичный файл!" << endl;
-        return 1;
+        exit(0);
     }
 
     // Ввод ключа для поиска
@@ -117,6 +103,24 @@ int main() {
 
     binFile.close();  // Закрываем двоичный файл
     cout << "Время выполнения программы:  " << (double)(t1 - t0) / CLOCKS_PER_SEC << " секунд" << endl;
-    return 0;
 }
-```
+
+
+int main() {
+    int a;
+    setlocale(LC_ALL, "rus");
+    cout << "Введите номер задания" << endl;
+    cin >> a;
+    
+    if (a == 1) {
+        task1();
+    }
+    else if (a == 2) {
+        task2();
+    }
+    else {
+        cout << "Такого задание нет";
+    }
+
+    return 0;
+}   
