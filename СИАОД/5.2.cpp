@@ -5,12 +5,11 @@
 #include <ctime>
 #include <unordered_set>
 #include <vector>
-#include <bitset>
 
 using namespace std;
 
-
-void task1() {
+// ЗАДАНИЕ 1
+int task1() {
     // Массивы для данных
     string Destination[5] = {
         "Новгород Великий",
@@ -66,9 +65,11 @@ void task1() {
     binFile.close(); // Закрытие двоичного файла
 
     cout << "Двоичный файл успешно создан" << endl;
+    return 0;
 }
 
-void task2() {
+// ЗАДАНИЕ 2
+int task2() {
     // Открываем двоичный файл для чтения
     ifstream binFile("test.bin", ios::binary);
     if (!binFile) {
@@ -102,24 +103,31 @@ void task2() {
     }
 
     binFile.close();  // Закрываем двоичный файл
-    cout << "Время выполнения программы:  " << (double)(t1 - t0) / CLOCKS_PER_SEC << " секунд" << endl;
+    cout << "Время выполнения программы:  " << (double)(t1 - t0) / CLOCKS_PER_SEC << " секунд" << endl; \
+    return 0;
 }
 
+// ЗАДАНИЕ 3
+int task3(){
+    return 0;
+}
 
 int main() {
     int a;
     setlocale(LC_ALL, "rus");
-    cout << "Введите номер задания" << endl;
+    cout << "Введите номер задания: ";
     cin >> a;
-    
-    if (a == 1) {
-        task1();
-    }
-    else if (a == 2) {
-        task2();
-    }
-    else {
-        cout << "Такого задание нет";
+
+    switch (a){
+        case 1:
+            task1();
+            break;
+        case 2:
+            task2();
+            break;
+        default:
+            cout << "Такого задание нет";
+            break;
     }
 
     return 0;
