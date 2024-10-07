@@ -23,3 +23,8 @@ files.zip #Архив для тестирования программы
 session_log.csv #лог-файл программы
 test.py файл #файл для тестирования программы
 ```
+## **Запуск тестов**
+```
+pytest test.py
+```
+![изображение](https://github.com/user-attachments/assets/e91aa85a-23df-4220-a2c0-0433dcb6b85d)
