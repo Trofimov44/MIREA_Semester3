@@ -41,6 +41,6 @@ int main() {
     }
 
     binFile.close();  // Закрываем двоичный файл
-    cout << "Время выполнения программы:  " << (double)(t1 - t0) / CLOCKS_PER_SEC << " секунд" << endl; \
+    cout << "Время выполнения программы:  " << (double)(t1 - t0) / CLOCKS_PER_SEC << " секунд" << endl;
         return 0;
 }
