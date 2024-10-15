@@ -2,6 +2,7 @@
 #include <fstream>
 #include <vector>
 #include <string>
+#include <algorithm> // Для std::sort
 
 using namespace std;
 
@@ -12,6 +13,12 @@ string readString(ifstream& binFile) {
     string line(length, ' ');
     binFile.read(&line[0], length); // Читаем строку
     return line;
+}
+
+// Функция для извлечения уникального номера из строки
+int extractNumber(const string& record) {
+    size_t spacePos = record.find(' '); // Находим первое пробел
+    return stoi(record.substr(0, spacePos)); // Преобразуем часть строки до первого пробела в число
 }
 
 // Функция для бинарного поиска по уникальному номеру
@@ -31,6 +38,11 @@ string binarySearchInFile(const string& filename, int targetNumber) {
 
     binFile.close();
 
+    // Сортировка строк по уникальному номеру
+    sort(records.begin(), records.end(), [](const string& a, const string& b) {
+        return extractNumber(a) < extractNumber(b);
+        });
+
     // Бинарный поиск по уникальному номеру
     int left = 0;
     int right = records.size() - 1;
@@ -40,8 +52,7 @@ string binarySearchInFile(const string& filename, int targetNumber) {
 
         // Получение уникального номера из строки
         string record = records[mid];
-        int spacePos = record.find(' '); // Находим первое пробел
-        int number = stoi(record.substr(0, spacePos)); // Преобразуем номер в число
+        int number = extractNumber(record); // Извлекаем номер из строки
 
         if (number == targetNumber) {
             return record; // Нашли нужную запись
@@ -62,9 +73,10 @@ int main() {
     int targetNumber;
     cout << "Введите номер для поиска: ";
     cin >> targetNumber;
-
+    clock_t t0 = clock();
     string result = binarySearchInFile("test.bin", targetNumber);
     cout << "Результат поиска: " << result << endl;
-
+    clock_t t1 = clock();
+    cout << "Время выполнения программы:  " << (double)(t1 - t0) / CLOCKS_PER_SEC << " секунд" << endl;
     return 0;
 }
