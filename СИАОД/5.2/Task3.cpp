@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include <algorithm> // Для std::sort
+#include <cmath>     // Для std::floor
 
 using namespace std;
 
@@ -17,11 +18,43 @@ string readString(ifstream& binFile) {
 
 // Функция для извлечения уникального номера из строки
 int extractNumber(const string& record) {
-    size_t spacePos = record.find(' '); // Находим первое пробел
+    size_t spacePos = record.find(' '); // Находим первый пробел
     return stoi(record.substr(0, spacePos)); // Преобразуем часть строки до первого пробела в число
 }
 
-// Функция для бинарного поиска по уникальному номеру
+// Функция для поиска по уникальному номеру с использованием середины и шага
+string searchWithMidAndStep(const vector<string>& records, int targetNumber) {
+    int size = records.size();
+    int mid = size / 2;  // Начинаем с середины
+    int step = mid / 2;  // Шаг будет уменьшаться на каждом шаге
+
+    while (step > 0) {
+        int number = extractNumber(records[mid]);  // Получаем номер из середины
+
+        if (number == targetNumber) {
+            return records[mid];  // Нашли нужную запись
+        }
+        else if (number < targetNumber) {
+            mid += step;  // Двигаемся вправо
+        }
+        else {
+            mid -= step;  // Двигаемся влево
+        }
+
+        step = step / 2;  // Уменьшаем шаг вдвое
+    }
+
+    // Находимся между двумя соседними элементами, проверяем оба
+    if (extractNumber(records[mid]) == targetNumber) {
+        return records[mid];  // Нашли нужную запись
+    }
+    if (mid + 1 < size && extractNumber(records[mid + 1]) == targetNumber) {
+        return records[mid + 1];  // Проверяем следующий элемент
+    }
+
+    return "Запись не найдена";  // Если запись не найдена
+}
+
 string binarySearchInFile(const string& filename, int targetNumber) {
     ifstream binFile(filename, ios::binary);
 
@@ -43,29 +76,8 @@ string binarySearchInFile(const string& filename, int targetNumber) {
         return extractNumber(a) < extractNumber(b);
         });
 
-    // Бинарный поиск по уникальному номеру
-    int left = 0;
-    int right = records.size() - 1;
-
-    while (left <= right) {
-        int mid = left + (right - left) / 2;
-
-        // Получение уникального номера из строки
-        string record = records[mid];
-        int number = extractNumber(record); // Извлекаем номер из строки
-
-        if (number == targetNumber) {
-            return record; // Нашли нужную запись
-        }
-        else if (number < targetNumber) {
-            left = mid + 1;
-        }
-        else {
-            right = mid - 1;
-        }
-    }
-
-    return "Запись не найдена"; // Если запись не найдена
+    // Поиск по уникальному номеру с использованием середины и шага
+    return searchWithMidAndStep(records, targetNumber);
 }
 
 int main() {
@@ -73,10 +85,9 @@ int main() {
     int targetNumber;
     cout << "Введите номер для поиска: ";
     cin >> targetNumber;
-    clock_t t0 = clock();
+
     string result = binarySearchInFile("test.bin", targetNumber);
     cout << "Результат поиска: " << result << endl;
-    clock_t t1 = clock();
-    cout << "Время выполнения программы:  " << (double)(t1 - t0) / CLOCKS_PER_SEC << " секунд" << endl;
+
     return 0;
 }
