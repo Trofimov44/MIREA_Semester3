@@ -26,8 +26,9 @@ string searchWithMidAndStep(const vector<string>& records, int targetNumber) {
     int size = records.size();
     int mid = size / 2;  // Начинаем с середины
     int step = mid / 2;  // Начальный шаг - половина середины
+    int iterationCount = 0;  // Счётчик итераций
 
-    while (step >= 1) {
+    while (step >= 1 && iterationCount < 800) {  // Ограничение на 500 итераций
         int number = extractNumber(records[mid]);  // Получаем номер из середины
 
         if (number == targetNumber) {
@@ -41,6 +42,7 @@ string searchWithMidAndStep(const vector<string>& records, int targetNumber) {
         }
 
         step = max(step / 2, 1);  // Минимальный шаг должен быть 1
+        iterationCount++;  // Увеличиваем счётчик итераций
     }
 
     // Проверка всех возможных соседних элементов, если шаг 1 не сработал
@@ -84,8 +86,8 @@ int main() {
     cin >> targetNumber;
     clock_t t0 = clock();
     string result = binarySearchInFile("test.bin", targetNumber);
-    cout << "Результат поиска: " << result << endl;
     clock_t t1 = clock();
+    cout << "Результат поиска: " << result << endl;
     cout << "Время выполнения программы:  " << (double)(t1 - t0) / CLOCKS_PER_SEC << " секунд" << endl;
     return 0;
 }
