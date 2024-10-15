@@ -3,7 +3,6 @@
 #include <vector>
 #include <string>
 #include <algorithm> // Для std::sort
-#include <cmath>     // Для std::floor
 
 using namespace std;
 
@@ -26,30 +25,29 @@ int extractNumber(const string& record) {
 string searchWithMidAndStep(const vector<string>& records, int targetNumber) {
     int size = records.size();
     int mid = size / 2;  // Начинаем с середины
-    int step = mid / 2;  // Шаг будет уменьшаться на каждом шаге
+    int step = mid / 2;  // Начальный шаг - половина середины
 
-    while (step > 0) {
+    while (step >= 1) {
         int number = extractNumber(records[mid]);  // Получаем номер из середины
 
         if (number == targetNumber) {
             return records[mid];  // Нашли нужную запись
         }
         else if (number < targetNumber) {
-            mid += step;  // Двигаемся вправо
+            mid = min(mid + step, size - 1);  // Двигаемся вправо, не выходя за пределы
         }
         else {
-            mid -= step;  // Двигаемся влево
+            mid = max(mid - step, 0);  // Двигаемся влево, не выходя за пределы
         }
 
-        step = step / 2;  // Уменьшаем шаг вдвое
+        step = max(step / 2, 1);  // Минимальный шаг должен быть 1
     }
 
-    // Находимся между двумя соседними элементами, проверяем оба
-    if (extractNumber(records[mid]) == targetNumber) {
-        return records[mid];  // Нашли нужную запись
-    }
-    if (mid + 1 < size && extractNumber(records[mid + 1]) == targetNumber) {
-        return records[mid + 1];  // Проверяем следующий элемент
+    // Проверка всех возможных соседних элементов, если шаг 1 не сработал
+    for (int i = max(mid - 1, 0); i <= min(mid + 1, size - 1); ++i) {
+        if (extractNumber(records[i]) == targetNumber) {
+            return records[i];  // Нашли нужную запись
+        }
     }
 
     return "Запись не найдена";  // Если запись не найдена
@@ -81,13 +79,13 @@ string binarySearchInFile(const string& filename, int targetNumber) {
 }
 
 int main() {
-    setlocale(LC_ALL, "rus");
     int targetNumber;
     cout << "Введите номер для поиска: ";
     cin >> targetNumber;
-
+    clock_t t0 = clock();
     string result = binarySearchInFile("test.bin", targetNumber);
     cout << "Результат поиска: " << result << endl;
-
+    clock_t t1 = clock();
+    cout << "Время выполнения программы:  " << (double)(t1 - t0) / CLOCKS_PER_SEC << " секунд" << endl;
     return 0;
 }
