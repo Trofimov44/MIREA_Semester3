@@ -9,26 +9,26 @@ using namespace std;
 // Функция для чтения строки из бинарного файла
 string readString(ifstream& binFile) {
     size_t length;
-    binFile.read(reinterpret_cast<char*>(&length), sizeof(length)); // Читаем длину строки
+    binFile.read(reinterpret_cast<char*>(&length), sizeof(length));
     string line(length, ' ');
-    binFile.read(&line[0], length); // Читаем строку
+    binFile.read(&line[0], length);
     return line;
 }
 
 // Функция для извлечения уникального номера из строки
 int extractNumber(const string& record) {
-    size_t spacePos = record.find(' '); // Находим первый пробел
-    return stoi(record.substr(0, spacePos)); // Преобразуем часть строки до первого пробела в число
+    size_t spacePos = record.find(' '); 
+    return stoi(record.substr(0, spacePos)); 
 }
 
 // Функция для поиска по уникальному номеру с использованием середины и шага
 string searchWithMidAndStep(const vector<string>& records, int targetNumber) {
     int size = records.size();
-    int mid = size / 2;  // Начинаем с середины
-    int step = mid / 2;  // Начальный шаг - половина середины
-    int iterationCount = 0;  // Счётчик итераций
+    int mid = size / 2;  
+    int step = mid / 2; 
+    int iterationCount = 0;
 
-    while (step >= 1 && iterationCount < 800) {  // Ограничение на 500 итераций
+    while (step >= 1 && iterationCount < 800) {  // Ограничение на 800 итераций
         int number = extractNumber(records[mid]);  // Получаем номер из середины
 
         if (number == targetNumber) {
@@ -42,7 +42,7 @@ string searchWithMidAndStep(const vector<string>& records, int targetNumber) {
         }
 
         step = max(step / 2, 1);  // Минимальный шаг должен быть 1
-        iterationCount++;  // Увеличиваем счётчик итераций
+        iterationCount++; 
     }
 
     // Проверка всех возможных соседних элементов, если шаг 1 не сработал
@@ -52,7 +52,7 @@ string searchWithMidAndStep(const vector<string>& records, int targetNumber) {
         }
     }
 
-    return "Запись не найдена";  // Если запись не найдена
+    return "Запись не найдена"; 
 }
 
 string binarySearchInFile(const string& filename, int targetNumber) {
