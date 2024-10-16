@@ -45,13 +45,6 @@ string searchWithMidAndStep(const vector<string>& records, int targetNumber) {
         iterationCount++; 
     }
 
-    // Проверка всех возможных соседних элементов, если шаг 1 не сработал
-    for (int i = max(mid - 1, 0); i <= min(mid + 1, size - 1); ++i) {
-        if (extractNumber(records[i]) == targetNumber) {
-            return records[i];  // Нашли нужную запись
-        }
-    }
-
     return "Запись не найдена"; 
 }
 
