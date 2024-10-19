@@ -53,17 +53,14 @@ public class TestCircleRectangle {
         GeomOdj[3] = new Triangle(3, 4, 5);
         GeomOdj[4] = new Square(4);
 
-        GeomOdj[0].howToColor();
-        GeomOdj[1].howToColor();
-        GeomOdj[2].howToColor();
-        GeomOdj[3].howToColor();
-        GeomOdj[4].howToColor();
+
+        for (int i = 0; i < 5; i++){
+             GeomOdj[i].howToColor();
+        }
         System.out.println(" ");
 
-        System.out.println(GeomOdj[0].getArea());
-        System.out.println(GeomOdj[1].getArea());
-        System.out.println(GeomOdj[2].getArea());
-        System.out.println(GeomOdj[3].getArea());
-        System.out.println(GeomOdj[4].getArea());
+        for (int i = 0; i < 5; i++){
+             System.out.println(GeomOdj[i].getArea());
+        }
     }
 }
