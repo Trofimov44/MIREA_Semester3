@@ -16,9 +16,9 @@ public class TestCircleRectangle {
         double side1;
         double side2;
         double side3;
-        String color = "color";
+        String color;
         boolean isFilled;
-        int x = 1;
+        int x;
 
         System.out.println("Введите сторону 1: ");
         side1 = input.nextDouble();
