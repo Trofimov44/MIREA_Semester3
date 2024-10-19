@@ -36,9 +36,7 @@ public class TestCircleRectangle {
         System.out.println("Залит ли объект? (1-да, 0-нет): ");
         Scanner input2 = new Scanner(System.in);
         x = input2.nextInt();
-        if (x == 1){
-            Triangle1.setFilled(true);
-        } else{ Triangle1.setFilled(false); }
+        Triangle1.setFilled(x == 1);
 
         System.out.printf(Triangle1.toString() + "\n");
         System.out.printf("Цвет: " + Triangle1.getColor() + "\n");
@@ -56,11 +54,7 @@ public class TestCircleRectangle {
 
         for (int i = 0; i < 5; i++){
              GeomOdj[i].howToColor();
-        }
-        System.out.println(" ");
-
-        for (int i = 0; i < 5; i++){
-             System.out.println(GeomOdj[i].getArea());
+             System.out.println("Площадь: " + GeomOdj[i].getArea() + "\n");
         }
     }
 }
