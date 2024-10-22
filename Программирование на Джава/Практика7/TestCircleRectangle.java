@@ -9,9 +9,10 @@ public class TestCircleRectangle {
         Rectangle rectangle = new Rectangle(2, 4);
         Rectangle rectangle1 = new Rectangle(3, 4);
 
-        System.out.println(Rectangle.max(rectangle1, rectangle));//Такое себе, но пойдёт
-        System.out.printf(Circle.max(circle, circle1) + "\n");
+        System.out.println(GeometricObject.max(rectangle1, rectangle));//Такое себе, но пойдёт
+        System.out.printf(GeometricObject.max(circle, circle1) + "\n");
         System.out.println(GeometricObject.compareTo(circle, rectangle));
+
         Scanner input = new Scanner(System.in);
         double side1;
         double side2;
@@ -50,7 +51,6 @@ public class TestCircleRectangle {
         GeomOdj[2] = new Rectangle(3, 7);
         GeomOdj[3] = new Triangle(3, 4, 5);
         GeomOdj[4] = new Square(4);
-
 
         for (int i = 0; i < 5; i++){
              GeomOdj[i].howToColor();
