@@ -11,9 +11,9 @@ public class Triangle extends GeometricObject implements Colorable{
         this.side3 = 1.0;
         setFilled(false);
     }
-    public Triangle(double side1, double side2, double side3) throws IllegalAccessException {
+    public Triangle(double side1, double side2, double side3) throws IllegalTriangleException {
         if (side1 + side2 <= side3 || side1 + side3 <= side2 || side2 + side3 <= side1) {
-            throw new IllegalAccessException("Третья сторона не может быть больше суммы двух других");
+            throw new IllegalTriangleException("Третья сторона не может быть больше суммы двух других");
         }
         this.side1 = side1;
         this.side2 = side2;
