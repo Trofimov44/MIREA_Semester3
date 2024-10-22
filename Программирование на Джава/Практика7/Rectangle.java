@@ -50,14 +50,6 @@ public class Rectangle extends GeometricObject implements Colorable{
         return 2 * (width + height);
     }
 
-    public static String max(Rectangle o1, Rectangle o2){
-        if (o1.getArea() > o2.getArea()){
-            return "Большим объектом является " + o1.getArea();
-        }
-        else{
-            return "Большим объектом является " + o2.getArea();
-        }
-    }
         public void howToColor() {
         System.out.println("Раскрасьте все четыре стороны.");
     }
