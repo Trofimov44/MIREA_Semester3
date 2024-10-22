@@ -48,7 +48,12 @@ public class GeometricObject implements Comparable, Colorable{
     }
 
     public static String max(GeometricObject o1, GeometricObject o2){
-        return "Что вы хотите чтобы тут возвращалось?У этого класса даже размера для объектов нет";
+        if (o1.getArea() > o2.getArea()){
+            return "Большим объектом является " + o1.getArea();
+        }
+        else{
+            return "Большим объектом является " + o2.getArea();
+        }
     }
 
     public static String compareTo(Circle o1, Rectangle o2){
