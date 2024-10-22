@@ -2,7 +2,7 @@ import java.io.ObjectInputStream;
 import java.sql.SQLOutput;
 import java.util.Scanner;
 public class TestCircleRectangle {
-    public static void main(String[] args) throws IllegalAccessException {
+    public static void main(String[] args) throws IllegalTriangleException {
         Circle circle = new Circle(1);
         Circle circle1 = new Circle(3);
 
