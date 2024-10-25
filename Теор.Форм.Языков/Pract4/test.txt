@@ -1,0 +1,6 @@
+int a, b
+begin
+while (a = 3):
+a:=34e+8;
+writeln a;
+end(*Комментарий*)
