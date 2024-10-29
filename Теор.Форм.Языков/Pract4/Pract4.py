@@ -214,6 +214,8 @@ def lexer(filename):
                             else:
                                 H_count += 1
                         if c not in real_num or c in ['E', 'e', '.']:
+                                if c not  in real_num:
+                                    is_real = False
                                 while c.isdigit() or c.isalpha() or c in ['E', 'e', '.', '+', '-']:
                                     if c in ['E', 'e']:
                                         E_count += 1
