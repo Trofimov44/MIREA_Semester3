@@ -65,23 +65,10 @@ def lexer(filename):
                         c = fd.read(1)
                     if c.isalpha() or c == '_':
                         CS = States.ID
-                    elif c.isdigit():
+                    elif c.isdigit() or c == '.':
                         CS = States.NM
                     elif c == ':':
                         CS = States.ASGN
-                    elif c == '.':
-                        buf = c
-                        c = fd.read(1)
-                        if c.isdigit():
-                            while c.isdigit():
-                                buf += c
-                                c = fd.read(1)
-                            tok = Token(TokNames.NUM, buf)
-                            add_token(tok)
-                            CS = States.H
-                        else:
-                            print(f"\nUnexpected character after '.': {c}")
-                            CS = States.ERR
                     elif c == '(':
                         c = fd.read(1)
                         if c == '*':  # Begin comment
@@ -230,12 +217,13 @@ def lexer(filename):
                                 while c.isdigit() or c.isalpha() or c in ['E', 'e', '.', '+', '-']:
                                     if c in ['E', 'e']:
                                         E_count += 1
+                                        buf = buf + c
+                                        c = fd.read(1)
+                                        if c in ['+', '-']:
+                                            plus_minus_count += 1
+                                        continue
                                     elif c == '.':
                                         dot_count += 1
-                                        if buf[-1] in ['+', '-', 'e', 'E']:
-                                            is_real = False
-                                    elif c in ['+', '-'] and buf[-1] in ['e', 'E']:
-                                        plus_minus_count += 1
                                     buf = buf + c
                                     c = fd.read(1)
                                 break
