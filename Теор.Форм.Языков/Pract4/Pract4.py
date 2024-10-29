@@ -1,8 +1,3 @@
-from tkinter.ttk import Treeview
-
-NUM_OF_KWORDS = 2
-
-
 Bin_num = ['1', '0', 'B', 'b']
 Oct_num = [ '0', '1', '2', '3', '4', '5', '6', '7', 'O', 'o']
 Dec_num = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'D', 'd']
