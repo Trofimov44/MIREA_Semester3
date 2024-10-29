@@ -232,6 +232,8 @@ def lexer(filename):
                                         E_count += 1
                                     elif c == '.':
                                         dot_count += 1
+                                        if buf[-1] in ['+', '-', 'e', 'E']:
+                                            is_real = False
                                     elif c in ['+', '-'] and buf[-1] in ['e', 'E']:
                                         plus_minus_count += 1
                                     buf = buf + c
