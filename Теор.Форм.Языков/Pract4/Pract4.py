@@ -211,19 +211,20 @@ def lexer(filename):
                         if c not in real_num or c in ['E', 'e', '.']:
                                 if c not  in real_num:
                                     is_real = False
-                                while c.isdigit() or c.isalpha() or c in ['E', 'e', '.', '+', '-']:
-                                    if c in ['E', 'e']:
-                                        E_count += 1
+                                else:
+                                    while c.isdigit() or c.isalpha() or c in ['E', 'e', '.', '+', '-']:
+                                        if c in ['E', 'e']:
+                                            E_count += 1
+                                            buf = buf + c
+                                            c = fd.read(1)
+                                            if c in ['+', '-']:
+                                                plus_minus_count += 1
+                                            continue
+                                        elif c == '.':
+                                            dot_count += 1
                                         buf = buf + c
                                         c = fd.read(1)
-                                        if c in ['+', '-']:
-                                            plus_minus_count += 1
-                                        continue
-                                    elif c == '.':
-                                        dot_count += 1
-                                    buf = buf + c
-                                    c = fd.read(1)
-                                break
+                                    break
                         buf = buf + c
                         c = fd.read(1)
                     if is_Bin and buf[-1] in ['B', 'b'] and B_count == 1:
