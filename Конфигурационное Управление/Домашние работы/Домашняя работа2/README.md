@@ -29,7 +29,8 @@ python main.py --graphviz-path "C:\Program Files\Graphviz\bin\dot.exe" --repo-pa
 Программа сгененерирует код в формате Graphviz
 ## Пример
 ![изображение](https://github.com/user-attachments/assets/b8c321ab-c784-43b2-a06e-4b8452a03fdc)
-![изображение](https://github.com/user-attachments/assets/411afbf7-44ff-4b78-b02e-d86863444618)
+![изображение](https://github.com/user-attachments/assets/3bd88abc-8211-4e28-bdd3-50b63cb38eaa)
+
 ## Тесты
 ```
 python -m unittest test.py
