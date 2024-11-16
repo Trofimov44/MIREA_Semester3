@@ -16,7 +16,7 @@ python3 -m venv venv
 source venv/bin/activate  # Для Linux/Mac
 venv\Scripts\activate     # Для Windows
 ```
-5.Установите необходимы зависимости для тестов
+5.Установите необходимые зависимости для тестов
 ```
 pip install unittest
 ```
