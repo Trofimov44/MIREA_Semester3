@@ -1,0 +1,4 @@
+Hello, world
+Second line
+Third line
+Modified file1 again

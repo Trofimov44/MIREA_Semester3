@@ -1,0 +1,15 @@
+digraph dependencies {
+    node [shape=box];
+    "f4577ebc421afc13e77ade48f946a2ecbd8ff261" [label="f4577ebc421afc13e77ade48f946a2ecbd8ff261:
+file1.txt
+file2.txt"];
+    "49d928bacbb1b4bcafbed050c71ed311e677abcc" [label="49d928bacbb1b4bcafbed050c71ed311e677abcc:
+file1.txt"];
+    "f4577ebc421afc13e77ade48f946a2ecbd8ff261" -> "49d928bacbb1b4bcafbed050c71ed311e677abcc";
+    "0c17763133f833ee5cf5c026b8e47d03924fe278" [label="0c17763133f833ee5cf5c026b8e47d03924fe278:
+file1.txt"];
+    "49d928bacbb1b4bcafbed050c71ed311e677abcc" -> "0c17763133f833ee5cf5c026b8e47d03924fe278";
+    "3337afa688630ea7cab5c2a32a73e91b7413e157" [label="3337afa688630ea7cab5c2a32a73e91b7413e157:
+file1.txt"];
+    "0c17763133f833ee5cf5c026b8e47d03924fe278" -> "3337afa688630ea7cab5c2a32a73e91b7413e157";
+}
