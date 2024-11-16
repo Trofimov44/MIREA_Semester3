@@ -18,7 +18,7 @@ venv\Scripts\activate     # Для Windows
 ```
 5.Установите необходимы зависимости для тестов
 ```
-pip install pytest
+pip install unittest
 ```
 # Запуск визуализатора
 С готовым конфигурационным файлом config.csv выполнить следующую команду
