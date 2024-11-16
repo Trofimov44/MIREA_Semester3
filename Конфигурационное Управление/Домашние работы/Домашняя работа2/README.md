@@ -23,12 +23,16 @@ pip install unittest
 ## Запуск визуализат
 Выполнить следующую команду
 ```
-python main.py --graphviz-path "C:\Program Files\Graphviz\bin\dot.exe" --repo-path "D:\test-repo"  --output-path "C:\Users\Mi\Desktop\lala.do" --filename "file1.txt"
+python main.py --graphviz-path "C:\Program Files\Graphviz\bin\dot.exe" --repo-path "D:\test-repo"  --output-path "C:\Users\Mi\Desktop\lala.dot" --filename "file1.txt"
 ```
 ## Выходные данные
 Программа сгененерирует код в формате Graphviz
 ## Пример
+![изображение](https://github.com/user-attachments/assets/b8c321ab-c784-43b2-a06e-4b8452a03fdc)
+![изображение](https://github.com/user-attachments/assets/058e50b4-134a-452f-917c-12bb953719d7)
+
 ## Тесты
 ```
-pytest -v
+python -m unittest test.py
 ```
+![изображение](https://github.com/user-attachments/assets/81f69cef-fb55-4e8a-aad9-24a6a16c16f8)
