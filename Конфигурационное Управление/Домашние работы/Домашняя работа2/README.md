@@ -20,7 +20,7 @@ venv\Scripts\activate     # Для Windows
 ```
 pip install unittest
 ```
-## Запуск визуализат
+## Запуск визуализатора
 Выполнить следующую команду
 ```
 python main.py --graphviz-path "C:\Program Files\Graphviz\bin\dot.exe" --repo-path "D:\test-repo"  --output-path "C:\Users\Mi\Desktop\lala.dot" --filename "file1.txt"
