@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<configuration>
+  <constant name="PI" value="3.14"/>
+  <constant name="RADIUS" value="10.0"/>
+  <constant name="AREA" value="314.0"/>
+  <array name="myArray">
+    <value>1.0</value>
+    <value>2.0</value>
+    <value>3.0</value>
+    <value>4.0</value>
+  </array>
+</configuration>

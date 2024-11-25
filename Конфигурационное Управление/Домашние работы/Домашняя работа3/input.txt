@@ -1,0 +1,6 @@
+// Пример конфигурации
+const PI = 3.14
+const RADIUS = 10
+const AREA = #{PI RADIUS RADIUS * *}
+
+myArray = (list 1 2 3 4)
