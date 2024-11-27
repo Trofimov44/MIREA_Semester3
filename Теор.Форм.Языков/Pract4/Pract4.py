@@ -239,7 +239,8 @@ def lexer(filename):
                     elif is_Hex and buf[-1] in ['H', 'h'] and H_count == 1:
                         tok = Token(TokNames.NUM, buf)
                         add_token(tok)
-                    elif is_real and E_count <= 1 and dot_count <= 1 and plus_minus_count <= 1 and buf[-1] not in ['E', 'e']:
+                    elif (is_real and E_count <= 1 and dot_count <= 1
+                          and plus_minus_count <= 1 and buf[-1] not in ['E', 'e', '+', '-']):
                         tok = Token(TokNames.NUM, buf)
                         add_token(tok)
                     else:
